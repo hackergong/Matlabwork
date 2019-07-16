@@ -1,0 +1,32 @@
+x=3*pi*(-1.2:1.2/15:1.2);
+y=x;
+[X,Y]=meshgrid(x,y);
+R=sqrt(X.^2+Y.^2)+eps;
+Z=sin(R)./R;
+[dzdx,dzdy]=gradient(Z);
+dzdr=sqrt(dzdx.^2+dzdy.^2);     %计算对r的导数
+dz2=del2(Z);                   %计算曲率
+subplot(321),surf(X,Y,Z);
+title('高度');
+shading faceted;
+colorbar('horiz'),brighten(0.2);
+subplot(322),surf(X,Y,Z,R);
+title('半径');
+shading faceted;
+colorbar('horiz');
+subplot(323),surf(X,Y,Z,dzdx);
+shading faceted;
+colorbar('horiz'),brighten(0.1);
+title('x方向导数特征');
+subplot(324),surf(X,Y,Z,dzdx);
+shading faceted;
+colorbar('horiz');
+title(' y方向导数特征');
+subplot(325),surf(X,Y,Z,abs(dzdr));
+shading faceted;
+colorbar('horiz'),brighten(0.6);
+title('径向导数');
+subplot(326),surf(X,Y,Z,abs(dz2));
+shading faceted;
+colorbar('horiz');
+title('曲率');

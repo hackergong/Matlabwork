@@ -1,0 +1,6 @@
+clear all;
+e=dir;
+str = {e.name};
+[s,v] = listdlg('PromptString','Ñ¡ÔñÎÄ¼þ:',...
+                'SelectionMode','single',...
+                'ListString',str)

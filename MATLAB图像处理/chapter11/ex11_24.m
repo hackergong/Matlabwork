@@ -1,0 +1,16 @@
+clear all;
+I = im2double(imread('eight.tif'));
+f1 = @(x) ones(64,1)*mean(x);
+f2 = @(x) ones(64,1)*max(x);
+f3 = @(x) ones(64,1)*min(x);
+I1 = colfilt(I,[8 8],'distinct',f1);
+I2 = colfilt(I,[8 8],'distinct',f2);
+I3 = colfilt(I,[8 8],'distinct',f3);
+subplot(2,2,1);imshow(I);
+title('Ô­Ê¼Í¼Ïñ');
+subplot(2,2,2);imshow(I1);
+title('mean');
+subplot(2,2,3);imshow(I2);
+title('max');
+subplot(2,2,4);imshow(I3);
+title('min');
