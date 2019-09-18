@@ -11,6 +11,7 @@
 lena1=imread('lena1.tif');
 lena([1:64],[1:64])=lena1([108:171],[108:171]);
 I=double(lena);
+imshow(I)
 N=64;     %整个图像每行的像素；
 M=64;
 J=4;       %子块每行的像素个数；
@@ -25,7 +26,6 @@ B=zeros(D,D);
 B1=zeros(J,J);
 B2=zeros(J,J);
 for i=1:J:(N-J+1)
-   i
 for j=1:J:(M-J+1)        %第一层循环的目的是遍历所有的子块；
       e=100;
    R=out(I,J,i,j);  %用out函数从原图像I中取出一个子块R。i,j 为子块R的左上角坐标。
@@ -58,6 +58,6 @@ for j=1:J:(M-J+1)        %第一层循环的目的是遍历所有的子块；
                  break;
               end
 
- end
+    end
 end         %第一层循环结束
 end
